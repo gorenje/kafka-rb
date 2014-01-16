@@ -42,7 +42,7 @@ module Kafka
       while (true) do
         messages = consume
         block.call(messages) if messages && !messages.empty?
-        sleep(polling)
+        sleep(polling) if messages.empty?
       end
     end
 
